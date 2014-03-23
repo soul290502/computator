@@ -41,14 +41,14 @@ public final class R {
         public static final int bMinus=0x7f08000d;
         public static final int bPlus=0x7f080011;
         public static final int bPoint=0x7f080016;
+        public static final int bdivide=0x7f080008;
+        public static final int bmultiple=0x7f080009;
         public static final int clear=0x7f080006;
-        public static final int divide=0x7f080008;
         public static final int editText1=0x7f080001;
         public static final int mc=0x7f080002;
         public static final int mm=0x7f080004;
         public static final int mp=0x7f080003;
         public static final int mr=0x7f080005;
-        public static final int multiple=0x7f080009;
         public static final int textView1=0x7f080018;
         public static final int textView2=0x7f080019;
     }

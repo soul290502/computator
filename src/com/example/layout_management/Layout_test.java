@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class Layout_test extends Activity {
@@ -15,8 +16,9 @@ public class Layout_test extends Activity {
 	private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,bPLus,bMinus,bEqual,clear;
 	private EditText edittext;
 	private TextView textview;
-	String[] array = new String[10];
-	int b=0;
+	String[] array = new String[50];
+	int b=0,secnumpart=0,newtatle=0;
+	double j=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class Layout_test extends Activity {
 
     	switch (v.getId()) {
         case R.id.b0:
-        	
+        	setbuttonShow("0");
             break;
         case R.id.b1:
         	setbuttonShow("1");
@@ -49,60 +51,86 @@ public class Layout_test extends Activity {
             break;
         case R.id.b2:
         	setbuttonShow("2");
+        	storeNum("num","2");
             break;
         case R.id.b3:
-            // do something else
+        	setbuttonShow("3");
             break;
         case R.id.b4:
-            // do something else
+        	setbuttonShow("4");
             break;
         case R.id.b5:
-            // do something else
+        	setbuttonShow("5");
             break;
         case R.id.b6:
-            // do something else
+        	setbuttonShow("6");
             break;
         case R.id.b7:
-            // do something else
+        	setbuttonShow("7");
+        	textview.setText(String.valueOf(b));
             break;
         case R.id.b8:
-            // do something else
+        	setbuttonShow("8");
             break;
         case R.id.b9:
-            // do something else
+        	setbuttonShow("9");
             break;
         case R.id.bEqul:
-            // do something else
+        	setbuttonShow("=");
             break;
         case R.id.bMinus:
-            // do something else
+        	setbuttonShow("-");
             break;
         case R.id.bPlus:
-            // do something else
+        	setbuttonShow("+");
+            break;
+        case R.id.bmultiple:
+        	setbuttonShow("*");
+            break;
+        case R.id.bdivide:
+        	setbuttonShow("/");
+        	storeNum("num","/");
             break;
         case R.id.bPoint:
-            // do something else
+        	setbuttonShow(".");
             break;
     	}
 
 	}
+
+    public static boolean isNumeric(String str)  
+    {  
+      try  
+      {  
+        double d = Double.parseDouble(str);  
+      }  
+      catch(NumberFormatException nfe)  
+      {  
+        return false;  
+      }  
+      return true;  
+    }
     
-    public String[] title = new String[] {
-	        
-    };
     public void storeNum(String a,String i) {
-		// TODO Auto-generated method stub
-
-//        int[] intArray = new int[3];//it can be declar array like this
-
-        array[b]=i;
+    	array[b]=i;
     	textview.setText(array[b]);
     	b+=1;
-
-    	
+    	if (!isNumeric(i)){
+    		operatorstor();
+    	}		
 	}
 
-
+    private void operatorstor(){
+    	j = array.length-1;	
+		for (int i = 0; i < array.length-1; i++) {
+			int val = Integer.parseInt("1234");
+//			double val=Double.valueOf(array[i]).doubleValue(); 
+//			newtatle+=val*Math.pow(10,1);		
+//			 int l = Integer.valueOf(array[i]).intValue(); 
+//			j-=1;
+			textview.setText(String.valueOf(val));//this way to switch the type is ok~~!!!
+		};
+		    }
 	private void clearClick() {
 		// TODO Auto-generated method stub
 		
@@ -110,7 +138,11 @@ public class Layout_test extends Activity {
 
 
 	private void equalClick() {
-		// TODO Auto-generated method stub
+		for (int j = 0; j < array.length; j++) {
+			if (isNumeric(array[j])){
+				
+			}
+		}
 		
 	}
 

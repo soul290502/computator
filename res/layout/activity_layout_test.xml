@@ -65,14 +65,14 @@
             android:text="+/-" />
 
         <Button
-            android:id="@+id/divide"
+            android:id="@+id/bdivide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="numberbuttonClick"
             android:text="/" />
 
         <Button
-            android:id="@+id/multiple"
+            android:id="@+id/bmultiple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
@@ -213,7 +213,7 @@
             android:id="@+id/bEqul"
             android:layout_width="wrap_content"
             android:layout_height="96dp"
-            android:onClick="numberbuttonClick"
+            android:onClick="equalClick"
             android:text="=" />
 
     </LinearLayout>
