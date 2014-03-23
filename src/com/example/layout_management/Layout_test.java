@@ -123,7 +123,7 @@ public class Layout_test extends Activity {
     private void operatorstor(){
     	j = array.length-1;	
 		for (int i = 0; i < array.length-1; i++) {
-			int val = Integer.parseInt("1234");
+			int val = Integer.parseInt(array[i]);//放array 會錯誤
 //			double val=Double.valueOf(array[i]).doubleValue(); 
 //			newtatle+=val*Math.pow(10,1);		
 //			 int l = Integer.valueOf(array[i]).intValue(); 
