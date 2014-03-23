@@ -26,7 +26,7 @@ public final class R {
     public static final class id {
         public static final int Button02=0x7f080007;
         public static final int LinearLayout1=0x7f080000;
-        public static final int action_settings=0x7f080019;
+        public static final int action_settings=0x7f08001a;
         public static final int b0=0x7f080014;
         public static final int b1=0x7f080012;
         public static final int b2=0x7f080013;
@@ -50,6 +50,7 @@ public final class R {
         public static final int mr=0x7f080005;
         public static final int multiple=0x7f080009;
         public static final int textView1=0x7f080018;
+        public static final int textView2=0x7f080019;
     }
     public static final class layout {
         public static final int activity_layout_test=0x7f030000;
