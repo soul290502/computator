@@ -1,11 +1,14 @@
 package com.example.layout_management;
 
+import com.example.layout_management.R.string;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.ClipData.Item;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -17,7 +20,9 @@ public class Layout_test extends Activity {
 	private EditText edittext;
 	private TextView textview;
 	String[] array = new String[50];
-	int b=0,secnumpart=0,newtatle=0;
+	String[] oparr=new String[5];
+	int b=0,secnumpart=0,finalnum=0,newtatle=0;
+	int oparrcount=0;
 	double j=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,20 @@ public class Layout_test extends Activity {
         
         
         findview();
+       clear.setOnClickListener(new OnClickListener() {
+			
+
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				b=0;secnumpart=0;finalnum=0;newtatle=0;
+				 oparrcount=0;
+				 cleararray();
+				 for (int i = 0; i < array.length; i++) {
+					 oparr[oparrcount]="0";
+				}
+				 edittext.setText("");
+			}
+		});
 //        buttonClick();
         
         
@@ -55,41 +74,53 @@ public class Layout_test extends Activity {
             break;
         case R.id.b3:
         	setbuttonShow("3");
+        	storeNum("num","3");
             break;
         case R.id.b4:
         	setbuttonShow("4");
+        	storeNum("num","4");
             break;
         case R.id.b5:
         	setbuttonShow("5");
+        	storeNum("num","5");
             break;
         case R.id.b6:
         	setbuttonShow("6");
+        	storeNum("num","6");
             break;
         case R.id.b7:
         	setbuttonShow("7");
-        	textview.setText(String.valueOf(b));
+        	storeNum("num","7");
             break;
         case R.id.b8:
         	setbuttonShow("8");
+        	storeNum("num","8");
             break;
         case R.id.b9:
         	setbuttonShow("9");
+        	storeNum("num","9");
             break;
         case R.id.bEqul:
-        	setbuttonShow("=");
+//        	setbuttonShow("=");
+        	storeNum("num","15");
+        	equalClick() ;
             break;
         case R.id.bMinus:
         	setbuttonShow("-");
+        	storeNum("num","12");
             break;
         case R.id.bPlus:
         	setbuttonShow("+");
+        	storeNum("num","11");
             break;
         case R.id.bmultiple:
         	setbuttonShow("*");
+        	storeNum("num","13");
             break;
         case R.id.bdivide:
         	setbuttonShow("/");
-        	storeNum("num","/");
+        	storeNum("num","14");
+        	
             break;
         case R.id.bPoint:
         	setbuttonShow(".");
@@ -112,38 +143,112 @@ public class Layout_test extends Activity {
     }
     
     public void storeNum(String a,String i) {
-    	array[b]=i;
-    	textview.setText(array[b]);
-    	b+=1;
-    	if (!isNumeric(i)){
-    		operatorstor();
+    		
+//        	
+//        	
+//        	for (int j = 0; j < b; j++) {
+//        		Log.d("de",array[j]);
+//			}
+
+    	if (i=="11"||i=="12"||i=="13"||i=="14"||i=="15"){
+		
+        	operatorstor(i);
+        	
     	}		
+    	else{
+    		array[b]=i;
+    		textview.setText(array[b]);
+    	}
+    	b+=1;
 	}
 
-    private void operatorstor(){
-    	j = array.length-1;	
-		for (int i = 0; i < array.length-1; i++) {
-			int val = Integer.parseInt(array[i]);//放array 會錯誤
-//			double val=Double.valueOf(array[i]).doubleValue(); 
-//			newtatle+=val*Math.pow(10,1);		
-//			 int l = Integer.valueOf(array[i]).intValue(); 
-//			j-=1;
-			textview.setText(String.valueOf(val));//this way to switch the type is ok~~!!!
+    private void operatorstor(String m){
+    	j = b-1;	
+    	double val=0;
+		for (int i = 0; i < b; i++) {
+			val = Integer.parseInt(array[i]);//放array 會錯誤，現在不會錯了，因為陣列不能空陣列
+			newtatle+=val*Math.pow(10,j);		
+			j-=1;
 		};
-		    }
+		cleararray();
+		textview.setText(String.valueOf(newtatle));//this way to switch the type is ok~~!!!
+		oparr[oparrcount]=m;
+		Log.d("secnuum",String.valueOf(secnumpart));
+		if(oparrcount!=0){
+			if (oparr[oparrcount]=="15") {
+				if (oparr[oparrcount-1]=="11") {
+					secnumpart+=newtatle;
+					Log.d("secnuum",String.valueOf(secnumpart));
+				}
+				else if (oparr[oparrcount-1]=="12") {
+					secnumpart-=newtatle;
+					Log.d("secnuum",String.valueOf(secnumpart));
+				} 
+				else if (oparr[oparrcount-1]=="13") {
+					secnumpart*=newtatle;
+					Log.d("secnuum",String.valueOf(secnumpart));
+				} 
+				else if (oparr[oparrcount-1]=="14") {
+					secnumpart/=newtatle;
+					Log.d("secnuum",String.valueOf(secnumpart));
+				} 
+			} 
+			else if (oparr[oparrcount-1]=="11") {
+				secnumpart+=newtatle;
+				Log.d("secnuum",String.valueOf(secnumpart));
+			}
+			else if (oparr[oparrcount-1]=="12") {
+				secnumpart-=newtatle;
+				Log.d("secnuum",String.valueOf(secnumpart));
+			} 
+			else if (oparr[oparrcount-1]=="13") {
+				secnumpart*=newtatle;
+				Log.d("secnuum",String.valueOf(secnumpart));
+			} 
+			else if (oparr[oparrcount-1]=="14") {
+				secnumpart/=newtatle;
+				Log.d("secnuum",String.valueOf(secnumpart));
+			} 
+			
+		}
+		else	{ secnumpart=newtatle;
+		Log.d("secnuum",String.valueOf(secnumpart));
+		}
+		oparrcount+=1;
+		newtatle=0;
+	}
+		
+	private void cleararray() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < array.length; i++) {
+			array[i]="0";
+		}
+	}
+
+	private void clearall(View v){
+		 b=0;secnumpart=0;finalnum=0;newtatle=0;
+		 oparrcount=0;
+		 cleararray();
+		 for (int i = 0; i < array.length; i++) {
+			 oparr[oparrcount]="0";
+		}
+		 edittext.setText("");
+	}
+
 	private void clearClick() {
 		// TODO Auto-generated method stub
-		
+		 b=0;secnumpart=0;finalnum=0;newtatle=0;
+		 oparrcount=0;
+		 cleararray();
+		 for (int i = 0; i < array.length; i++) {
+			 oparr[oparrcount]="0";
+		}
 	}
 
 
 	private void equalClick() {
-		for (int j = 0; j < array.length; j++) {
-			if (isNumeric(array[j])){
-				
-			}
-		}
-		
+		textview.setText(String.valueOf(secnumpart));
+		edittext.setText(String.valueOf(secnumpart));
 	}
 
 

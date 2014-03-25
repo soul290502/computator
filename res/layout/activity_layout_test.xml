@@ -55,7 +55,7 @@
             android:id="@+id/clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="numberbuttonClick"
+            android:onClick="clearall()"
             android:text="c" />
 
         <Button
@@ -213,7 +213,7 @@
             android:id="@+id/bEqul"
             android:layout_width="wrap_content"
             android:layout_height="96dp"
-            android:onClick="equalClick"
+            android:onClick="numberbuttonClick"
             android:text="=" />
 
     </LinearLayout>
@@ -229,7 +229,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="69dp"
-            android:text="B00611043" />
+            android:text="And23604" />
 
     </RelativeLayout>
 
